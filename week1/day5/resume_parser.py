@@ -1,9 +1,10 @@
 import os
 import time
 from pathlib import Path
+from typing import get_origin
 from dotenv import load_dotenv
 from groq import Groq
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 load_dotenv()
 my_api_key=os.getenv("GROQ_API_KEY")
@@ -48,13 +49,38 @@ Preferred Qualifications
 - Strong problem-solving and analytical skills
 - Excellent written and verbal communication skills
 """
-class JobD(BaseModel):
+
+# Reusable Base Model
+class LLMBaseModel(BaseModel):
+    """
+    Normalize LLM output before validation.
+
+    Any field annotated as list[...] will automatically convert
+    None -> [] if the LLM returns null.
+    """
+
+    @model_validator(mode="before")
+    @classmethod
+    def normalize_null_lists(cls, data):
+        if not isinstance(data, dict):
+            return data
+
+        for field_name, field_info in cls.model_fields.items():
+            origin = get_origin(field_info.annotation)
+
+            if origin is not None and issubclass(origin, list):
+                if data.get(field_name) is None:
+                    data[field_name] = []
+
+        return data
+
+class JobD(LLMBaseModel):
     role: str
-    required_skills: list[str]
-    preferred_skills: list[str]
-    minimum_experience: float | None
-    education_requirements: list[str]
-    responsibilities: list[str]
+    required_skills: list[str] = Field(default_factory=list)
+    preferred_skills: list[str] = Field(default_factory=list)
+    minimum_experience: float | None = None
+    education_requirements: list[str] = Field(default_factory=list)
+    responsibilities: list[str] = Field(default_factory=list)
 
 jobd_schema = JobD.model_json_schema()
 
@@ -115,31 +141,29 @@ job = JobD(**job_data)
 print(job.minimum_experience)
 print(job.education_requirements)
 
-
-
 #parse real
 class MatchResult(BaseModel):
     score: float
     details: dict
-class Experience(BaseModel):
+class Experience(LLMBaseModel):
     company: str | None = None
     role: str | None = None
     duration: str | None = None
     description: str | None = None
-    skills_used: list[str] = []
+    skills_used: list[str] = Field(default_factory=list)
 
-class Resume(BaseModel):
+class Resume(LLMBaseModel):
     name: str | None = None
     email: str | None = None
     phone: str | None = None
 
     total_experience_years: float | None = None
 
-    skills: list[str] = []
-    experiences: list[Experience] = []
-    education: list[str] = []
-    projects: list[str] = []
-    certifications: list[str] = []
+    skills: list[str] = Field(default_factory=list)
+    experiences: list[Experience] = Field(default_factory=list)
+    education: list[str] = Field(default_factory=list)
+    projects: list[str] = Field(default_factory=list)
+    certifications: list[str] = Field(default_factory=list)
 
 
 resume_schema = Resume.model_json_schema()
