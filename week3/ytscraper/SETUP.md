@@ -126,6 +126,11 @@ uv run ytrag preflight
 Checks every dependency — keys, vector store, embedding model, LLM — and says
 which one is unhappy.
 
+**`Warning: You are sending unauthenticated requests to the HF Hub`** — expected,
+and safe to ignore. HuggingFace suggests setting a token for faster downloads;
+nothing here needs one. It is printed by a compiled library at a level Python
+cannot intercept, which is why it survives.
+
 | symptom | fix |
 |---|---|
 | `GROQ_API_KEY is not set` | `.env` missing, or you are in the wrong folder |

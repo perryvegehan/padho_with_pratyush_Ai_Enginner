@@ -3,10 +3,17 @@
 Nothing else in the package reads os.getenv directly.
 """
 
+import logging
 import os
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
+
+# huggingface_hub warns on every model load that requests are unauthenticated.
+# It is advice about download rate limits, not a problem, and it makes a
+# working first run look like it failed.
+logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 
 # ------------------------------------------------------------------
 # .env loading

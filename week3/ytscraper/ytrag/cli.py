@@ -800,7 +800,25 @@ def serve(
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
 
-    console.print(f"[dim]Starting… the embedding model loads first (a few seconds).[/dim]")
+    # Check the port before loading a 90MB model and reporting "startup
+    # complete", only to fail on bind afterwards. uvicorn's own message arrives
+    # after the success line and reads like the app crashed for no reason.
+    import socket
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+        probe.settimeout(1)
+        if probe.connect_ex((host, port)) == 0:
+            console.print(
+                f"[bold red]Port {port} is already in use.[/bold red]\n"
+                f"Something is already listening on {host}:{port} — most likely "
+                f"another `ytrag serve` you started earlier.\n\n"
+                f"Either stop that one (Ctrl-C in its window), or use another "
+                f"port here:\n  [cyan]uv run ytrag serve --port {port + 1}[/cyan]\n\n"
+                f"[dim]To find it on Windows:  netstat -ano | findstr :{port}[/dim]"
+            )
+            raise typer.Exit(1)
+
+    console.print("[dim]Starting… the embedding model loads first (a few seconds).[/dim]")
     console.print(f"[bold green]http://{host}:{port}[/bold green]  [dim](Ctrl-C to stop)[/dim]")
 
     if reload:

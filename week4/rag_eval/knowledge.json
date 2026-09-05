@@ -1,0 +1,34 @@
+[
+  {
+    "category": "leave_policy",
+    "text": "Employees in India receive 24 days of paid leave per year. Employees also receive 12 public holidays every year."
+  },
+  {
+    "category": "leave_policy",
+    "text": "Planned leave should be applied through Workday before taking leave."
+  },
+  {
+    "category": "work_policy",
+    "text": "Akamai follows a hybrid work model. Employees work from office three days every week on Tuesday, Wednesday and Thursday."
+  },
+  {
+    "category": "reimbursement",
+    "text": "Employees can claim Rs 2000 per month for home internet reimbursement using the ExpenseIt portal before the 5th of every month."
+  },
+  {
+    "category": "reimbursement",
+    "text": "Employees receive Rs 3000 every month as a wellness benefit for gym memberships or fitness app subscriptions."
+  },
+  {
+    "category": "promotion",
+    "text": "Promotion cycles happen twice every year during March and September. Employees usually become eligible after spending at least two years at their current level."
+  },
+  {
+    "category": "learning",
+    "text": "Employees receive learning and development benefits for certifications, courses and professional development."
+  },
+  {
+    "category": "security",
+    "text": "All employees must complete mandatory security awareness training every quarter."
+  }
+]

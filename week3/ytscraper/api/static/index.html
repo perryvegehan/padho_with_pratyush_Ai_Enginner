@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lecture Search — Padho with Pratyush</title>
 <meta name="description" content="Ask any DSA question and jump to the exact second it was explained." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127891;</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -472,35 +473,76 @@ EXAMPLES.forEach(text => {
 });
 
 // ---------- YouTube player ----------
-let player = null, playerReady = false, pending = null, currentVideo = null;
+let player = null;          // created lazily, on the first jump
+let apiReady = false;       // the IFrame API script has loaded
+let apiBlocked = false;     // ...or an extension stopped it arriving
+let pending = null;         // a jump requested before either was true
+let currentVideo = null;
 
+// The API calls this global itself once it has loaded.
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player("playerBox", {
-    height: "100%", width: "100%",
-    playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
-    events: { onReady: () => {
-      playerReady = true;
-      if (pending) { const p = pending; pending = null; jump(p.v, p.s, p.t, p.el); }
-    }}
-  });
+  apiReady = true;
+  if (pending) { const p = pending; pending = null; jump(p.v, p.s, p.t, p.el); }
+}
+
+// Ad and privacy blockers commonly block youtube.com/iframe_api outright. If
+// it has not arrived after a few seconds, say so instead of silently queuing
+// clicks that will never fire.
+setTimeout(() => {
+  if (!apiReady) {
+    apiBlocked = true;
+    nowText.textContent = "YouTube player blocked — timestamps still open on YouTube.";
+    if (pending) { const p = pending; pending = null; openOnYouTube(p.v, p.s); }
+  }
+}, 6000);
+
+function openOnYouTube(videoId, seconds) {
+  window.open(`https://www.youtube.com/watch?v=${videoId}&t=${Math.floor(seconds)}s`, "_blank", "noopener");
 }
 
 function jump(videoId, seconds, title, el) {
-  if (!playerReady) { pending = { v: videoId, s: seconds, t: title, el }; return; }
-  if (currentVideo === videoId) {
-    player.seekTo(seconds, true);          // same lecture: instant in-page seek
+  // Queue until the API script is in. It loads from youtube.com, so on a slow
+  // connection the first click can easily beat it.
+  if (apiBlocked) { openOnYouTube(videoId, seconds); return; }
+  if (!apiReady) { pending = { v: videoId, s: seconds, t: title, el }; return; }
+
+  if (!player) {
+    // Create the player WITH the video. Constructing an empty YT.Player builds
+    // an iframe pointing at an invalid embed URL, and every later
+    // loadVideoById on it fails silently.
+    player = new YT.Player("playerBox", {
+      videoId: videoId,
+      playerVars: { rel: 0, modestbranding: 1, playsinline: 1, start: Math.floor(seconds), autoplay: 1 },
+      events: {
+        onReady: (e) => e.target.playVideo(),
+        onError: (e) => showPlayerError(videoId, seconds, e.data),
+      },
+    });
+    currentVideo = videoId;
+  } else if (currentVideo === videoId) {
+    player.seekTo(seconds, true);       // same lecture: instant in-page seek
     player.playVideo();
   } else {
-    player.loadVideoById({ videoId, startSeconds: seconds });
+    player.loadVideoById({ videoId: videoId, startSeconds: seconds });
     currentVideo = videoId;
   }
+
   nowText.textContent = `${title} — ${fmt(seconds)}`;
   nowPlaying.classList.add("live");
-  document.querySelectorAll(".source.active").forEach(n => n.classList.remove("active"));
+  document.querySelectorAll(".result.active").forEach(n => n.classList.remove("active"));
   if (el) el.classList.add("active");
   if (window.innerWidth <= 940) {
     document.getElementById("playerWrap").scrollIntoView({ behavior: "smooth", block: "center" });
   }
+}
+
+// Embedding can be blocked per-video, and extensions block the iframe outright.
+// Either way, give the viewer a working link rather than a dead black box.
+function showPlayerError(videoId, seconds, code) {
+  const url = `https://www.youtube.com/watch?v=${videoId}&t=${Math.floor(seconds)}s`;
+  nowText.innerHTML = `Can't play here (error ${code}). `
+    + `<a href="${url}" target="_blank" rel="noopener" style="color:var(--accent)">Open on YouTube ↗</a>`;
+  nowPlaying.classList.remove("live");
 }
 
 function fmt(t) {

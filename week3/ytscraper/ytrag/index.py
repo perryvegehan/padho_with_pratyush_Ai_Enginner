@@ -5,6 +5,7 @@ the collection name carries the embedding dim, and point IDs are derived from
 a stable chunk_id so re-ingesting overwrites instead of duplicating.
 """
 
+import atexit
 import json
 import re
 import uuid
@@ -36,6 +37,25 @@ from ytrag.models import Chunk, _NAMESPACE
 from ytrag.util import with_retry
 
 _CLIENT: QdrantClient | None = None
+
+
+def _close_client() -> None:
+    """Release the store before the interpreter tears down.
+
+    Qdrant's own __del__ runs during shutdown, by which point sys.meta_path is
+    gone and its close() raises ImportError. Harmless, but it prints a
+    traceback after a successful command and looks like a crash.
+    """
+    global _CLIENT
+    if _CLIENT is not None:
+        try:
+            _CLIENT.close()
+        except Exception:
+            pass
+        _CLIENT = None
+
+
+atexit.register(_close_client)
 
 
 def get_client() -> QdrantClient:
@@ -93,12 +113,14 @@ def ensure_collection() -> str:
                 distance=Distance.COSINE,
             ),
         )
-        # Needed for the --video filter on search.
-        client.create_payload_index(
-            collection_name=name,
-            field_name="video_id",
-            field_schema=PayloadSchemaType.KEYWORD,
-        )
+        # Only meaningful on a Qdrant server — the embedded store filters
+        # without an index and warns if you ask for one.
+        if QDRANT_URL:
+            client.create_payload_index(
+                collection_name=name,
+                field_name="video_id",
+                field_schema=PayloadSchemaType.KEYWORD,
+            )
     return name
 
 
