@@ -1,0 +1,9 @@
+[
+  {"input": "abcabcbb\n", "output": "3"},
+  {"input": "bbbbb\n", "output": "1"},
+  {"input": "pwwkew\n", "output": "3"},
+  {"input": "aa\n", "output": "1"},
+  {"input": "abba\n", "output": "2"},
+  {"input": "dvdf\n", "output": "3"},
+  {"input": "\n", "output": "0"}
+]

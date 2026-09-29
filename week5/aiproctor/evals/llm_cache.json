@@ -1,0 +1,356 @@
+{
+  "68cc30142965e1df316f11f07928a303134e2624": {
+    "ai_likelihood": 0.6,
+    "reasoning": "The code is very clean, uses type hints, a main guard, and concise comments typical of AI\u2011generated snippets, though a skilled human could produce similar style under time pressure.",
+    "signals": [
+      "type hints on functions",
+      "main guard with if __name__ == \"__main__\"",
+      "concise explanatory comments",
+      "well\u2011named variables and clear structure"
+    ],
+    "flag": true
+  },
+  "a79f13071dcfbbebb7b224ce1f3a0b17b808047c": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The code is clean and uses type hints and a concise sliding\u2011window implementation, which are common in AI\u2011generated snippets but also typical of experienced humans; lack of comments leans slightly toward AI.",
+    "signals": [
+      "type hints on function signature",
+      "well\u2011named variables and function",
+      "concise sliding\u2011window logic without explanatory comments",
+      "no leftover debug prints or extra scaffolding"
+    ],
+    "flag": false
+  },
+  "68169da53362c4bf2df6c1a167d36c3bd816c80b": {
+    "ai_likelihood": 0.65,
+    "reasoning": "The solution contains type hints, a docstring, and extensive inline comments, which are typical of AI\u2011generated code but could also be written by a meticulous human under time pressure.",
+    "signals": [
+      "type hints",
+      "docstring",
+      "detailed comments",
+      "main guard (if __name__ == '__main__')",
+      "clean variable names",
+      "explicit handling of empty string"
+    ],
+    "flag": true
+  },
+  "ca7f1866e626053bfbcaf48e9019452fce3d3d18": {
+    "ai_likelihood": 0.6,
+    "reasoning": "The solution is very clean, uses type hints, a descriptive function name, and a comment about input handling\u2014traits common in AI\u2011generated snippets, though a careful human could produce similar code under time pressure.",
+    "signals": [
+      "type hints on functions",
+      "descriptive variable and function names",
+      "main guard with __name__ check",
+      "comment explaining input reading",
+      "compact, well\u2011structured implementation"
+    ],
+    "flag": true
+  },
+  "ee137d9ecc16f7d87e89b03bd26abedbe6a3a7d6": {
+    "ai_likelihood": 0.6,
+    "reasoning": "The code is very clean with type hints, a main guard, and explanatory comments, which are common in AI\u2011generated solutions but also possible for careful humans.",
+    "signals": [
+      "type hints on function",
+      "main guard (if __name__ == \"__main__\")",
+      "clear explanatory comments",
+      "concise dictionary\u2011based solution",
+      "consistent naming and style"
+    ],
+    "flag": true
+  },
+  "939d286cd0c3f16be69fa9119a1f698c2a08641c": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The solution is concise and uses a common hashmap pattern without extra comments, docstrings, or type hints, which is typical of a human under time pressure rather than a polished AI output.",
+    "signals": [
+      "no docstrings or type hints",
+      "minimal explanatory comments",
+      "standard hashmap two\u2011sum implementation",
+      "simple top\u2011level script without main guard"
+    ],
+    "flag": false
+  },
+  "740e81a92b21bdcb3f763a8c11ac618d8e6762e8": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The code is clean and well\u2011structured with type hints and a main guard, which are common in AI\u2011generated snippets but also typical of careful human solutions; no obvious over\u2011explanatory comments or textbook boilerplate are present.",
+    "signals": [
+      "type hint on solve()",
+      "use of __main__ guard",
+      "concise comments describing input parsing",
+      "clear variable names",
+      "single-pass hashmap solution"
+    ],
+    "flag": false
+  },
+  "8d06f923f35ff3287c557da72b910aa9aeba2406": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The solution is concise, well\u2011named, and includes a type hint and a main guard, which are common in both careful human code and AI\u2011generated snippets, making it ambiguous.",
+    "signals": [
+      "type hint on main function",
+      "use of sys.stdin.read().strip().split() pattern",
+      "main guard (if __name__ == '__main__')",
+      "compact one\u2011pass hash\u2011map solution",
+      "no explanatory comments or docstrings"
+    ],
+    "flag": false
+  },
+  "cc81a665808f0926de707b93b8b478a8b0442fce": {
+    "ai_likelihood": 0.6,
+    "reasoning": "The solution is very clean, uses type hints, thorough comments, and a full main guard\u2014patterns common in AI\u2011generated answers, though a careful human could also produce this style.",
+    "signals": [
+      "type hints on function signature",
+      "detailed explanatory comments",
+      "use of a mapping dict for bracket pairs",
+      "explicit handling of invalid characters",
+      "main guard (if __name__ == \"__main__\")",
+      "clear variable names and structure"
+    ],
+    "flag": true
+  },
+  "cf6c7c5b8ecc1ebeb2c1b89d9bb8f26db9b9c6e4": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The solution is clean and concise with type hints but lacks explanatory comments, which could be typical of both a careful human and an AI\u2011generated answer.",
+    "signals": [
+      "type hint on function signature",
+      "compact implementation without comments",
+      "use of fallback '#'\nwhen popping from empty stack",
+      "standard mapping dictionary for brackets"
+    ],
+    "flag": false
+  },
+  "2addcf436fdd388bc5f0cb9c4e3b3739e685f508": {
+    "ai_likelihood": 0.65,
+    "reasoning": "The code is very clean with type hints, a docstring, and extra comments that a hurried human might skip, suggesting possible AI assistance.",
+    "signals": [
+      "docstring for function",
+      "type hints on parameters and return",
+      "detailed explanatory comment about ignored characters",
+      "use of main guard (if __name__ == \"__main__\")",
+      "well\u2011named variables and data structures",
+      "separate is_balanced function"
+    ],
+    "flag": true
+  },
+  "84921b7648796dca427abdc1aa93f9d7a1c4673e": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is clean and well\u2011structured with type hints and a main guard, which both humans and AI can produce; the modest use of comments and handling of unexpected characters are typical of careful human solutions, so AI generation is possible but not strongly indicated.",
+    "signals": [
+      "use of type hints (s: str) and return type bool",
+      "clear variable names and concise logic",
+      "presence of a main guard (if __name__ == \"__main__\")",
+      "comment explaining ignored characters",
+      "no excessive documentation or boilerplate"
+    ],
+    "flag": false
+  },
+  "58cdf058881b5ec4c054f666ee3a927ad63b1a94": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is concise and well\u2011structured but lacks explanatory comments, docstrings, or type hints that AI often includes; its straightforward style suggests a human under time pressure.",
+    "signals": [
+      "clean variable names and function",
+      "no comments or docstrings",
+      "no type hints",
+      "no main guard",
+      "direct use of sys.stdin for input",
+      "standard sliding\u2011window implementation"
+    ],
+    "flag": false
+  },
+  "47d776e865c75e2ee07048fbe3cea9747122934f": {
+    "ai_likelihood": 0.35,
+    "reasoning": "The code is clean, uses type hints and a main guard, but lacks explanatory comments or docstrings; such style is common for both careful humans and AI-generated snippets, so the AI likelihood is moderate but not high.",
+    "signals": [
+      "type hint in function signature",
+      "main guard (if __name__ == \"__main__\")",
+      "concise variable names",
+      "no explanatory comments or docstrings",
+      "standard sliding\u2011window implementation"
+    ],
+    "flag": false
+  },
+  "cdc6be9d5ccff71d2d8747772236c72123d493fc": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The solution is concise with clear variable names and brief comments, typical of both competent humans and AI; lack of type hints or extra scaffolding leans slightly toward human, but the polished style could also be AI\u2011generated.",
+    "signals": [
+      "brief explanatory comments",
+      "clean variable naming",
+      "no type hints",
+      "no main guard",
+      "standard sliding-window implementation"
+    ],
+    "flag": false
+  },
+  "2b68570ee946211bddf2c1b82929fc2171f16a82": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The solution is concise and functional but lacks comments, type hints, or a main guard, which are common in hurried human submissions; its style is typical of a quick coding test rather than a polished AI-generated snippet.",
+    "signals": [
+      "no explanatory comments or docstrings",
+      "uses straightforward dictionary lookup without extra abstractions",
+      "no type hints or main guard",
+      "compact one-pass algorithm"
+    ],
+    "flag": false
+  },
+  "75e2f375ac38fa5400efeab5635d1714d4fb3495": {
+    "ai_likelihood": 0.6,
+    "reasoning": "The solution is clean, uses type hints and a concise sorted\u2011by\u2011index approach typical of AI\u2011generated snippets, though a competent human could write the same under time pressure.",
+    "signals": [
+      "type hints on function signature",
+      "sorted with lambda to preserve original indices",
+      "main guard (__name__ == \"__main__\")",
+      "compact, well\u2011named variables without comments"
+    ],
+    "flag": true
+  },
+  "89e90422ff3c9877b2f180965385df60757f1317": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The code is clean and uses a typical one\u2011pass hash\u2011map solution with a brief explanatory comment, which is common in AI\u2011generated examples but also plausible for a careful human under time pressure.",
+    "signals": [
+      "concise comment explaining algorithm",
+      "well\u2011structured helper function",
+      "clean variable names",
+      "no type hints or docstring",
+      "standard one\u2011pass hash\u2011map solution"
+    ],
+    "flag": false
+  },
+  "47c8287cb961ac54513e8c4fe07e5b1b8ed675ad": {
+    "ai_likelihood": 0.4,
+    "reasoning": "The code is concise and follows a textbook pattern without comments or type hints, which could be either a quick human solution or AI\u2011generated; the lack of extra documentation leans slightly toward a human under time pressure.",
+    "signals": [
+      "No explanatory comments or docstrings",
+      "Uses a compact dictionary for bracket pairs",
+      "No type hints or main guard",
+      "Variable names are short but clear",
+      "Standard textbook algorithm implementation"
+    ],
+    "flag": false
+  },
+  "14e5ec794bf8d6ef35efd04e3942f992e9ac6263": {
+    "ai_likelihood": 0.35,
+    "reasoning": "The solution is concise, well\u2011named, and includes type hints and a main guard, but lacks extra comments or verbose handling that often appear in AI\u2011generated snippets; it could plausibly be written by a competent human under time pressure.",
+    "signals": [
+      "type hints on function signature",
+      "early length parity check",
+      "dictionary mapping for closing brackets",
+      "use of a stack (list) for expected brackets",
+      "main guard with input handling",
+      "compact one\u2011line output expression"
+    ],
+    "flag": false
+  },
+  "fb27b767110f715e5463ac99705e58c8cbf4c8c1": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is concise with a brief explanatory comment and clear variable names, but lacks type hints, docstrings, or extra structure that many AI\u2011generated snippets include; it looks like a typical human solution written under time pressure.",
+    "signals": [
+      "brief explanatory comment",
+      "clear variable names",
+      "no type hints or docstrings",
+      "single function without main guard",
+      "simple loop\u2011replace approach"
+    ],
+    "flag": false
+  },
+  "826bbf0e032a083cc49b55237cce40417a9741ba": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The code is concise with short variable names, lacks docstrings or type hints, and includes a commented-out debug print, which are typical of a human under time pressure.",
+    "signals": [
+      "short variable names (d, l, r, ans)",
+      "no docstrings or type hints",
+      "no main guard",
+      "commented-out debug print line"
+    ],
+    "flag": false
+  },
+  "baf46e341fdc83cf7fa29a2a10298f2614cab5e4": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is a straightforward, unoptimized O(n\u00b2) solution with minimal comments and no type hints, which is typical of a human under time pressure, though its clean formatting could also come from an AI template.",
+    "signals": [
+      "No explanatory comments or docstrings",
+      "Naive double\u2011loop algorithm despite large input constraints",
+      "Simple, generic variable names",
+      "No type hints or main\u2011guard block",
+      "Consistent but basic formatting"
+    ],
+    "flag": false
+  },
+  "75a09d5fe8054d7418deda796ab1f463d0838e3c": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is concise and correctly implements a standard sliding\u2011window algorithm, but it lacks docstrings, type hints, or elaborate comments and even contains a leftover debug print, which are more typical of a human under time pressure.",
+    "signals": [
+      "clean, well\u2011named variables (i, j, freq, res)",
+      "no docstrings or type hints",
+      "simple, direct implementation of known algorithm",
+      "commented\u2011out debug print line",
+      "no main guard or extra explanatory comments"
+    ],
+    "flag": false
+  },
+  "790417ed1830ea10dcccb6a24b7f5fac695b1759": {
+    "ai_likelihood": 0.3,
+    "reasoning": "The code is minimal, lacks comments, type hints, or docstrings, and uses a straightforward nested-loop approach typical of a human under time pressure.",
+    "signals": [
+      "simple nested loops solution",
+      "no comments or docstrings",
+      "no type hints",
+      "no main guard",
+      "standard variable names"
+    ],
+    "flag": false
+  },
+  "614b7f62d8fca0e61cbd54c2db06f207a6381722": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The code is concise but includes a leftover debug comment and lacks docstrings or type hints, which are typical of a human under time pressure.",
+    "signals": [
+      "commented-out debug print",
+      "no docstrings or type hints",
+      "no main guard",
+      "simple variable names"
+    ],
+    "flag": false
+  },
+  "d7c3701af0718fcef484d19e927033643b0805cd": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The code is concise, lacks docstrings, type hints, or extra explanatory comments, and follows a typical contest style, suggesting a human author.",
+    "signals": [
+      "no docstrings or type hints",
+      "no explanatory comments",
+      "simple variable names",
+      "no main guard",
+      "straightforward two\u2011pointer implementation"
+    ],
+    "flag": false
+  },
+  "197f543c2419cdc6442552c76f9e1f6c08fe642d": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The code is concise, lacks docstrings, type hints, or explanatory comments, and follows a typical quick\u2011solve pattern, suggesting it was written by a human under time pressure.",
+    "signals": [
+      "no docstrings or type hints",
+      "no explanatory comments",
+      "simple variable names (st, c, t)",
+      "no main guard or extra structure"
+    ],
+    "flag": false
+  },
+  "7228ea02d5d0aeedcfb9742b0848eb4a0ee8a9d5": {
+    "ai_likelihood": 0.25,
+    "reasoning": "The solution is concise with minimal comments and no type hints or docstrings, typical of a human under time pressure, though its clean structure could also be produced by an AI.",
+    "signals": [
+      "uses range(len(s)) instead of direct iteration",
+      "has a leftover commented-out debug print",
+      "no docstring or type hints",
+      "simple variable names"
+    ],
+    "flag": false
+  },
+  "95e88686cd5d94e95f73449f23713d357300bfd2": {
+    "ai_likelihood": 0.2,
+    "reasoning": "The code is simple and lacks documentation or type hints, but the presence of unused variables (cnt1, cnt2, cnt3) and the straightforward style suggest a human wrote it under time pressure.",
+    "signals": [
+      "unused variables (cnt1, cnt2, cnt3)",
+      "no docstrings or type hints",
+      "no main guard",
+      "simple imperative style"
+    ],
+    "flag": false
+  }
+}
