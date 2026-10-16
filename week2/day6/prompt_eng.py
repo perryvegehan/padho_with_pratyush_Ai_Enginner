@@ -33,7 +33,7 @@ You have to classify the issue in a category
 You have to classify the issue in one of three categories namely billing, technical, return.
 #OUTPUT FORMAT
 Your answer should be in one word only. The one word shoud be one of the categories given in constraints
-#Example
+#Example (zero shot(no example) / one shot)
 For instance if a user compalin says he wants a refund then the category is Return
 #FALLBACK
 If the issue is unrelated to any of the categories mentioned in constraints, then the answer should be OTHER
